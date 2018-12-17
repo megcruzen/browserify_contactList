@@ -1,0 +1,22 @@
+{
+  "addressbook": [
+    {
+      "name": "Joe Blow",
+      "phone": "555-555-5555",
+      "address": "123 Test St",
+      "id": 1
+    },
+    {
+      "name": "John Smith",
+      "phone": "555-123-4567",
+      "address": "555 Testers Ave",
+      "id": 2
+    },
+    {
+      "name": "Jane Doe",
+      "phone": "555-555-5555",
+      "address": "555 Wall St",
+      "id": 3
+    }
+  ]
+}
