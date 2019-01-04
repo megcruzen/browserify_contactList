@@ -1,10 +1,56 @@
 //  ContactForm component that, when filled out and a submit button is pressed, adds a new contact to storage.
 // It should import the ContactCollection component.
 
-import collection from "./collection.js"
+import collectionData from "./collectionData.js"
+import contactList from "./contactList.js"
 
 const form = {
+    formBuilder() {
+        let formContainer = document.querySelector("#form");
+        let formHTML = `
+        <h1>Address Book</h1>
+        <article id="formfields">
+            <fieldset>
+                <label for="contactName">Name:</label>
+                <input type="text" name="contactName" id="contactName">
+            </fieldset>
+            <fieldset>
+                <label for="contactPhone">Phone:</label>
+                <input type="text" name="contactPhone" id="contactPhone">
+            </fieldset>
+            <fieldset>
+                <label for="contactAddress">Address:</label>
+                <input type="text" name="contactAddress" id="contactAddress">
+            </fieldset>
+            <button id="add-button" form="addressbook" value="Record New Contact">Record New Contact</button>
+        </article>
+        `
+        formContainer.innerHTML = formHTML;
+        let addButton = document.querySelector("#add-button");
+        addButton.addEventListener("click", () => {
+            // ^^^ Add click event to button
+            // Then pull data from each input field (set variable for each)
+            let contactName = document.querySelector("input[name='contactName']").value;
+            let contactPhone = document.querySelector("input[name='contactPhone']").value;
+            let contactAddress = document.querySelector("input[name='contactAddress']").value;
+            console.log("Button was clicked");
 
+            console.log("Input values:", contactName, contactPhone, contactAddress);
+
+            let newContact = {             // Creates new object using input values
+                name: contactName,
+                phone: contactPhone,
+                address: contactAddress
+            };
+
+            console.log(newContact);
+
+            collectionData.postNewContact(newContact)
+            .then(response => {
+                contactList.collect()
+            })
+        })
+    }
 }
 
 export default form;

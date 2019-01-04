@@ -1,3 +1,6 @@
-import contactList from "./contactList"
+import contactListDisplay from "./contactList"
+import form from "./form"
 
-contactList.collect()
+contactListDisplay.collect();
+form.formBuilder();
+

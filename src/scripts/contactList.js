@@ -6,21 +6,22 @@
 // 3. Append to DOM
 
 import contactInfo from "./contactInfo"
-import collection from "./collection"
+import collectionData from "./collectionData"
 
 const contactListDisplay = {
     collect() {
-        collection.getAllContacts()         // Fetches (in collection.js)
+        collectionData.getAllContacts()         // Fetches (in collection.js)
         .then(allContacts => {              // Parses JS array
             let contactDocFrag = document.createDocumentFragment();
-            allContacts.forEach(contact => {     // Loop through data
-                let contactHTML = contactInfo.contactBuilder(contact);
+            allContacts.forEach(contactObj => {     // Loop through data
+                let contactHTML = contactInfo.contactBuilder(contactObj);
                 console.log(contactHTML);
                 contactDocFrag.appendChild(contactHTML);    // Built HTML is added to doc frag
             })
             // console.log(contactDocFrag);
 
-            let container = document.querySelector("#container");
+            let container = document.querySelector("#listContainer");
+            container.innerHTML = "";
             container.appendChild(contactDocFrag);      // Doc frag is added to container in DOM
         })
       }
